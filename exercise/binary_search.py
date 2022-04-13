@@ -72,6 +72,7 @@ if __name__ == "__main__":
     # time_diff = end_time - start_time
     # print(f"Execution Time {time_diff} \n\n")
 
-    # If you want to Test with Jovian "evaluate_test_cases" function, you will see test results output on terminal
+    # If you want to Test with Jovian "evaluate_test_cases" function, do uncomment below single line f code,
+    # you will see test results output on terminal
 
     # evaluate_test_cases(locate_card, tests)

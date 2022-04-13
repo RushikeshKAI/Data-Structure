@@ -43,3 +43,39 @@ large_tests = {
     },
     "output": 9999998
 }
+
+rotated_test = [{
+    "input": {
+        "nums": [19, 25, 29, 3, 5, 6, 7, 9, 11, 14],
+    },
+    "output": 3
+}, {
+    "input": {
+        "nums": [4, 5, 6, 7, 8, 1, 2, 3],
+    },
+    "output": 5
+}, {
+    "input": {
+        "nums": [7, 3, 5],
+    },
+    "output": 1
+}, {
+    "input": {
+        "nums": [3, 5, 7, 8, 9, 10],
+    },
+    "output": 0
+}]
+
+rotated_single_test = {
+    "input": {
+        "nums": [3, 5, 7, 8, 9, 10],
+    },
+    "output": 0
+}
+
+rotated_large_tests = {
+    "input": {
+        "nums": list(range(100000, 0, 1)),
+    },
+    "output": 0
+}
