@@ -120,3 +120,156 @@ Consider the following examples.
 [1, 2, 3, 4, 5, -1, 0] (answer lies to the right of the middle element)
 
 
+**Binary Search Trees, Traversals and Balancing**
+QUESTION 3: you are tasked with developing a fast in-memory data structure to manage profile information 
+(username, name and email) for 100 million users. It should allow the following operations to be performed efficiently:
+
+    1. Insert the profile information for a new user.
+    2. Find the profile information of a user, given their username
+    3. Update the profile information of a user, given their username
+    4. List all the users of the platform, sorted by username
+Assuming that usernames are unique.
+
+The various functions can be implemented as follows:
+
+    1. Insert: Loop through the list and add the new user at a position that keeps the list sorted.
+    2. Find: Loop through the list and find the user object with the username matching the query.
+    3. Update: Loop through the list, find the user object matching the query and update the details
+    4. List: Return the list of user objects.
+
+Analyze the algorithm's complexity and identify inefficiencies:
+    
+The operations insert, find, update involves iterating over a list of users, in the worst case, they may take up to N iterations to return a result, where N is the total number of users. list_all however, simply returns the existing internal list of users.
+
+Thus, the time complexities of the various operations are:
+
+    1. Insert: O(N)
+    2. Find: O(N)
+    3. Update: O(N)
+    4. List: O(1)
+
+Verify that the space complexity of each operation is O(1).
+
+**Balanced Binary Search Trees**
+
+For use case, require the binary tree to have some additional properties:
+
+Keys and Values: Each node of the tree stores a key (a username) and a value (a User object). Only keys are shown in the picture above for brevity. 
+A binary tree where nodes have both a key and a value is often referred to as a map or treemap (because it maps keys to values).
+Binary Search Tree: The left subtree of any node only contains nodes with keys that are lexicographically smaller than the node's key, 
+and the right subtree of any node only contains nodes with keys that lexicographically larger than the node's key. 
+A tree that satisfies this property is called a binary search trees, and it's easy to locate a specific key by traversing a single path down from the root note.
+Balanced Tree: The tree is balanced i.e. it does not skew too heavily to one side or the other. 
+The left and right subtrees of any node shouldn't differ in height/depth by more than 1 level.
+
+Height of a Binary Tree
+The number of levels in a tree is called its height. As you can tell from the picture above, each level of a tree contains twice as many nodes as the previous level.
+
+For a tree of height k, here's a list of the number of nodes at each level:
+
+    Level 0: 1
+    
+    Level 1: 2
+    
+    Level 2: 4 i.e. 2^2
+    
+    Level 3: 8 i.e. 2^3
+    
+    ...
+    
+    Level k-1: 2^(k-1)
+
+If the total number of nodes in the tree is N, then it follows that
+
+N = 1 + 2^1 + 2^2 + 2^3 + ... + 2^(k-1)
+
+We can simplify this equation by adding 1 on each side:
+    
+    N + 1 = 1 + 1 + 2^1 + 2^2 + 2^3 + ... + 2^(k-1) 
+    
+    N + 1 = 2^1 + 2^1 + 2^2+ 2^3 + ... + 2^(k-1) 
+    
+    N + 1 = = 2^2 + 2^2 + 2^3 + ... + 2^(k-1)
+    
+    N + 1 = = 2^3 + 2^3 + ... + 2^(k-1)
+    
+    ...
+    
+    N + 1 = 2^(k-1) + 2^(k-1)
+    
+    N + 1 = 2^k
+    
+    k = log(N + 1) <= log(N) + 1 
+
+Thus, to store N records we require a balanced binary search tree (BST) of height no larger than log(N) + 1. 
+This is a very useful property, in combination with the fact that nodes are arranged in a way that makes 
+it easy to find a specific key by following a single path down from the root.
+
+
+**Binary Tree**
+
+**QUESTION 2**: Implement a binary tree using Python, and show its usage with some examples.
+
+
+**Traversing a Binary Tree**
+QUESTION 3: Write a function to perform the inorder traversal of a binary tree.
+
+QUESTION 4: Write a function to perform the preorder traversal of a binary tree.
+
+QUESTION 5: Write a function to perform the postorder traversal of a binary tree.
+
+A traversal refers to the process of visiting each node of a tree exactly once. 
+Visiting a node generally refers to adding the node's key to a list. 
+There are three ways to traverse a binary tree and return the list of visited keys:
+
+Inorder traversal
+
+    Traverse the left subtree recursively inorder.
+    Traverse the current node.
+    Traverse the right subtree recursively inorder.
+
+Preorder traversal
+
+    Traverse the current node.
+    Traverse the left subtree recursively preorder.
+    Traverse the right subtree recursively preorder.
+
+Postorder traversal
+    
+    Traverse the right subtree recursively postorder.
+    Traverse the current node.
+    Traverse the left subtree recursively postorder.
+
+**Height and Size of a Binary Tree**
+
+QUESTION 6: Write a function to calculate the height/depth of a binary tree
+
+QUESTION 7: Write a function to count the number of nodes in a binary tree
+
+The height/depth of a binary tree is defined as the length of the longest path from its root node to a leaf. It can be computed recursively.
+
+
+**Binary Search Tree (BST)**
+
+A binary search tree or BST is a binary tree that satisfies the following conditions:
+
+    1. The left subtree of any node only contains nodes with keys less than the node's key
+    2. The right subtree of any node only contains nodes with keys greater than the node's key
+
+QUESTION 8: Write a function to check if a binary tree is a binary search tree (BST).
+
+QUESTION 9: Write a function to find the maximum key in a binary tree.
+
+QUESTION 10: Write a function to find the minimum key in a binary tree.
+
+**Storing Key-Value Pairs using BSTs**
+
+Recall that we need to store user objects with each key in our BST. Let's define new class BSTNode to represent the nodes of our tree. 
+Apart from having properties key, left and right, we'll also store a value and pointer to the parent node (for easier upward traversal).
+
+**Insertion into BST**
+
+QUESTION 11: Write a function to insert a new node into a BST.
+
+
+
