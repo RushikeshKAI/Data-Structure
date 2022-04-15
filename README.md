@@ -272,4 +272,24 @@ Apart from having properties key, left and right, we'll also store a value and p
 QUESTION 11: Write a function to insert a new node into a BST.
 
 
+**Assignment 2 - Hash Tables in Python**
+
+**Python Dictionaries and Hash Tables**
+
+Our objective in this assignment is to implement a HashTable class which supports the following operations:
+
+    1. Insert: Insert a new key-value pair
+    2. Find: Find the value associated with a key
+    3. Update: Update the value associated with a key
+    4. List: List all the keys stored in the hash table
+
+Data List
+
+We'll build the HashTable class step-by-step. As a first step is to create a Python list which will hold all the key-value pairs. 
+We'll start by creating a list of a fixed size.
+
+
+**Assignment 3 - Divide-n-Conquer Algorithms in Python**
+
+
 
