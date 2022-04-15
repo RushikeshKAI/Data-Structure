@@ -31,19 +31,19 @@ class UserDatabase:
 
 
 if __name__ == "__main__":
-    # database = UserDatabase()
-    # database.insert(list(rushikesh))
-    # database.insert(list(aakash))
-    # database.insert(list(biraj))
-    # user_obj = database.find('biraj')
-    # print(f"{user_obj}")
-    # database.update(User(username=biraj[0], name='Biraj N', email='birajn@example.com'))
-    # user_obj = database.find('biraj')
-    # print(f"After updating biraj record in database {user_obj}")
-    # print(f"All users list, \n{database.list_all()}")
-    # database.insert(list(siddhant))
-    # print(f"Lets Verify new record successfully inserted")
-    # print(f"After record insertion, \n{database.list_all()}")
+    database = UserDatabase()
+    database.insert(list(rushikesh))
+    database.insert(list(aakash))
+    database.insert(list(biraj))
+    user_obj = database.find('biraj')
+    print(f"{user_obj}")
+    database.update(User(username=biraj[0], name='Biraj N', email='birajn@example.com'))
+    user_obj = database.find('biraj')
+    print(f"After updating biraj record in database {user_obj}")
+    print(f"All users list, \n{database.list_all()}")
+    database.insert(list(siddhant))
+    print(f"Lets Verify new record successfully inserted")
+    print(f"After record insertion, \n{database.list_all()}")
 
-    # Thoroughly Testing by using for loop iterations
-    cProfile.run("[i for i in range(10000000)]")
+    # Below code is for to test Thoroughly by using for loop iterations
+    # cProfile.run("[i for i in range(10000000)]")
