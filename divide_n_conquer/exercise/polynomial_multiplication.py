@@ -36,5 +36,5 @@ if __name__ == "__main__":
         print(f"Product of polynomials is: {poly_result}")
         print("Polynomial coefficient result as below: ,")
         polynomial(poly_result)
-        print("Polynomial result status: ", poly_result == poly['output'])
+        print("\n\nPolynomial result status: ", poly_result == poly['output'])
 

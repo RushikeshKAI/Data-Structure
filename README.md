@@ -300,3 +300,227 @@ Their product is $(2 \times 3) + (2 \times 4 + 0 \times 3)x + (2 \times 2 + 3 \t
 i.e. $6 + 8x + 19x^2 + 41x^3 + 38x^4 + 14x^5$ 
 It can be represented by the list `[6, 8, 19, 41, 38, 14]`.
 
+
+**Merge Sort, Quicksort and Divide-n-Conquer Algorithms in Python**
+
+We need to write a function to sort a list of numbers in increasing order.
+
+Input
+
+    1. nums: A list of numbers e.g. [4, 2, 6, 3, 4, 6, 2, 1]
+Output
+
+    2. sorted_nums: The sorted version of nums e.g. [1, 2, 2, 3, 4, 4, 6, 6]
+
+Here are some scenarios we may want to test out:
+
+    1. Some lists of numbers in random order.
+    2. A list that's already sorted.
+    3. A list that's sorted in descending order.
+    4. A list containing repeating elements.
+    5. An empty list.
+    6. A list containing just one element.
+    7. A list containing one element repeated many times.
+    8. A really long list.
+
+Analyze the algorithm's complexity and identify inefficiencies:
+    The core operations in bubble sort are "compare" and "swap". To analyze the time complexity, 
+    we can simply count the total number of comparisons being made, since the total number of swaps 
+    will be less than or equal to the total number of comparisons
+    ```
+    for _ in range(len(nums) - 1):
+        for i in range(len(nums) - 1):
+            if nums[i] > nums[i+1]:
+                nums[i], nums[i+1] = nums[i+1], nums[i]
+    ```
+
+There are two loops, each of length `n-1`, where `n` is the number of elements in `nums`. So the total number of comparisons is $(n-1)*(n-1)$ i.e. $(n-1)^2$ i.e. $n^2 - 2n + 1$. 
+
+Expressing this in the Big O notation, we can conclude that the time complexity of bubble sort is $O(n^2)$ (also known as quadratic complexity).
+
+The space complexity of bubble sort is $O(n)$, even thought it requires only constant/zero additional space, 
+because the space required to store the inputs is also considered while calculating space complexity.
+
+As we saw from the last test, a list of 10,000 numbers takes about 12 seconds to be sorted using bubble sort. 
+A list of ten times the size will 100 times longer i.e. about 20 minutes to be sorted, which is quite inefficient. 
+A list of a million elements would take close to 2 days to be sorted.
+
+
+**Insertion Sort**
+
+Before we look at explore more efficient sorting techniques, here's another simple sorting technique called insertion sort, 
+where we keep the initial portion of the array sorted and insert the remaining elements one by one at the right position.
+
+**Merge Sort**
+
+Following a visual representation of the divide and conquer applied for sorting numbers. 
+This algorithm is known as merge sort:
+
+![img.png](img.png)
+
+QUESTION 3: Write a function to merge two sorted arrays.
+
+Two merge two sorted arrays, we can repeatedly compare the two least elements of each array, and copy over the smaller one into a new array.
+
+Here's a visual representation of the merge operation:
+
+![img_1.png](img_1.png)
+
+Analyze the algorithm's complexity and identify inefficiencies.
+    Analyzing the complexity of recursive algorithms can be tricky. It helps to track and follow the chain of recursive calls. 
+    We'll add some print statements to our merge_sort and merge_functions to display the tree of recursive function calls
+
+Space Complexity:
+    To find the space complexity of merge sort, it helps to recall that a new list with 
+    equal to the sum of the sizes of the two lists is created in each invocation of merge.
+
+At first glance, it may seem that O(n) space is required for each level of the tree, 
+so the space complexity of merge sort is O(n log n).
+
+**Quicksort**
+
+To overcome the space inefficiencies of merge sort, we'll study another divide-and-conquer based sorting algorithm called quicksort, which works as follows:
+
+    1. If the list is empty or has just one element, return it. It's already sorted.
+    2. Pick a random element from the list. This element is called a pivot. 
+    3. Reorder the list so that all elements with values less than or equal to the pivot come before the pivot, 
+    while all elements with values greater than the pivot come after it. This operation is called partitioning.
+    4. The pivot element divides the array into two parts which can be sorted independently by making a recursive call to quicksort.
+
+![](../../AppData/Lo![img_2.png](img_2.png)cal/Temp/Quicksort.png)
+
+Summary and Exercises
+We've covered the following sorting algorithms in this tutorial:
+
+    1. Bubble sort
+    2. Insertion sort
+    3. Merge sort
+    4. Quick sort
+
+**Lesson 4**
+**Recursion and Dynamic Programming**
+
+QUESTION 1: Write a function to find the length of the longest common subsequence between two sequences. 
+
+    E.g. Given the strings "serendipitous" and "precipitation", the longest common subsequence is "reipito" and its length is 7.
+
+    A "sequence" is a group of items with a deterministic ordering. Lists, tuples and ranges are some common sequence types in Python.
+
+    A "subsequence" is a sequence obtained by deleting zero or more elements from another sequence. For example, "edpt" is a subsequence of "serendipitous".
+
+Test cases
+    
+    1. General case (string)
+    2. General case (list)
+    3. No common subsequence
+    4. One is a subsequence of the other
+    5. One sequence is empty
+    6. Both sequences are empty
+    7. Multiple subsequences with same length
+        A. “abcdef” and “badcfe”
+
+Recursive Solution:
+Create two counters idx1 and idx2 starting at 0. Our recursive function will compute the LCS of seq1[idx1:] and seq2[idx2:]
+
+    1. If seq1[idx1] and seq2[idx2] are equal, then this character belongs to the LCS of seq1[idx1:] and seq2[idx2:] (why?). 
+    2. Further the length this is LCS is one more than LCS of seq1[idx1+1:] and seq2[idx2+1:]
+    3. If not, then the LCS of seq1[idx1:] and seq2[idx2:] is the longer one among the LCS of seq1[idx1+1:], seq2[idx2:] and the LCS of seq1[idx1:], seq2[idx2+1:]
+    4. If either seq1[idx1:] or seq2[idx2:] is empty, then their LCS is empty.
+
+Complexity Analysis
+Worst case occurs when each time we have to try 2 subproblems i.e. when the sequences have no common elements.
+
+**Dynamic programming**
+
+    1. Create a table of size (n1+1) * (n2+1) initialized with 0s, where n1 and n2 are the lengths of the sequences. 
+    table[i][j] represents the longest common subsequence of seq1[:i] and seq2[:j]. Here's what the table looks like (source: Kevin Mavani, Medium).
+    2. If seq1[i] and seq2[j] are equal, then table[i+1][j+1] = 1 + table[i][j]
+    3. If seq1[i] and seq2[j] are equal, then table[i+1][j+1] = max(table[i][j+1], table[i+1][j])
+    
+
+**0-1 Knapsack Problem**
+Problem statement:
+
+You’re in charge of selecting a football (soccer) team from a large pool of players. Each player has a cost, and a rating. 
+You have a limited budget. What is the highest total rating of a team that fits within your budget. Assume that there’s no minimum or maximum team size.
+
+
+**Lesson 5 - Graph Algorithms (BFS, DFS & Shortest Paths)**
+
+**Graph Algorithms (BFS, DFS, Shortest Paths) using Python**
+
+Graph Data Structure
+![img_3.png](img_3.png)
+
+Adjacency Lists
+![img_4.png](img_4.png)
+
+**Graph Traversal**
+Breadth-First Search
+![img_5.png](img_5.png)
+
+BFS pseudocode:
+
+     1  procedure BFS(G, root) is
+     2      let Q be a queue
+     3      label root as discovered
+     4      Q.enqueue(root)
+     5      while Q is not empty do
+     6          v := Q.dequeue()
+     7          if v is the goal then
+     8              return v
+     9          for all edges from v to w in G.adjacentEdges(v) do
+    10              if w is not labeled as discovered then
+    11                  label w as discovered
+    12                  Q.enqueue(w)
+
+DFS pseudocode :
+
+    procedure DFS_iterative(G, v) is
+        let S be a stack
+        S.push(v)
+        while S is not empty do
+            v = S.pop()
+            if v is not labeled as discovered then
+                label v as discovered
+                for all edges from v to w in G.adjacentEdges(v) do 
+                    S.push(w)
+
+**Directed Graphs**
+
+![img_6.png](img_6.png)
+
+**Shortest Paths**
+Question: Write a function to find the length of the shortest path between two nodes in a weighted directed graph.
+    ![img_8.png](img_8.png)
+Dijkstra's algorithm:
+    ![img_7.png](img_7.png)
+
+    1. Mark all nodes unvisited. Create a set of all the unvisited nodes called the unvisited set.
+    2. Assign to every node a tentative distance value: set it to zero for our initial node and to infinity for all other nodes. 
+    Set the initial node as current.[16]
+    3. For the current node, consider all of its unvisited neighbours and calculate their tentative distances through the current node. 
+    Compare the newly calculated tentative distance to the current assigned value and assign the smaller one. 
+    For example, if the current node A is marked with a distance of 6, and the edge connecting it with a neighbour B has length 2, 
+    then the distance to B through A will be 6 + 2 = 8. If B was previously marked with a distance greater than 8 then change it to 8. 
+    Otherwise, the current value will be kept.
+    4. When we are done considering all of the unvisited neighbours of the current node, mark the current node as visited 
+    and remove it from the unvisited set. A visited node will never be checked again.
+    5. If the destination node has been marked visited (when planning a route between two specific nodes) or 
+    if the smallest tentative distance among the nodes in the unvisited set is infinity (when planning a complete traversal; 
+    occurs when there is no connection between the initial node and remaining unvisited nodes), then stop. The algorithm has finished.
+    6. Otherwise, select the unvisited node that is marked with the smallest tentative distance, set it as the new "current node", and go back to step 3.
+
+**Binary Heap**
+
+A data structure to maintain the running minimum/maximum of a set of numbers, supporting efficient addition/removal.
+
+Heap operations:
+
+    Insertion - O(log N)
+    Min/Max - O(1)
+    (depending on type of heap)
+    Deletion - O(log N)
+    Convert a list to a heap - O(n)
+
+Question: Implement Dijkstra's shortest path algorithm using the heap module from Python. What is the complexity of the algorithm?

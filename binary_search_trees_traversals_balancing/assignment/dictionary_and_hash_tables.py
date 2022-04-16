@@ -38,6 +38,22 @@ def get_index(data_list, a_string):
 
 
 if __name__ == "__main__":
+    phone_numbers = {
+      'Rushikesh': '9489484949',
+      'Hemanth': '9595949494',
+      'Siddhant': '9231325312'
+    }
+    print(f"phone numbers, {phone_numbers}")
+    print(f"Fetch data by key, {phone_numbers['Rushikesh']}")
+    new_value = phone_numbers['Vishal'] = '8787878787'
+    print("Adding a new value")
+    print(f"Added new value, {new_value}")
+    new_value = phone_numbers['Rushikesh'] = '8787878787'
+    print(f"Updating value based on key, {new_value}")
+    print(f"Printing all values, {phone_numbers}")
+    for name in phone_numbers:
+        print('Name:', name, ', Phone Number:', phone_numbers[name])
+
     MAX_HASH_TABLE_SIZE = 4096
     data_list_ = [None] * MAX_HASH_TABLE_SIZE
     print(get_index(data_list_, '') == 0)
@@ -59,22 +75,3 @@ if __name__ == "__main__":
     # List all pairs excepting None values
     pairs = [kv[0] for kv in data_list_ if kv is not None]
     print(f"Pair values, {pairs}")
-
-    
-# phone_numbers = {
-#   'Rushikesh': '9489484949',
-#   'Hemanth': '9595949494',
-#   'Siddhant': '9231325312'
-# }
-# print(f"phone numbers, {phone_numbers}")
-# print(f"Fetch data by key, {phone_numbers['Rushikesh']}")
-# new_value = phone_numbers['Vishal'] = '8787878787'
-# print("Adding a new value")
-# print(f"Added new value, {new_value}")
-# new_value = phone_numbers['Rushikesh'] = '8787878787'
-# print(f"Updating value based on key, {new_value}")
-# print(f"Printing all values, {phone_numbers}")
-# for name in phone_numbers:
-#     print('Name:', name, ', Phone Number:', phone_numbers[name])
-
-
