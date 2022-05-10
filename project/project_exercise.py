@@ -1,3 +1,17 @@
+"""
+Step-wise Approach:  
+
+1. Find the length of the string say len. Now, find the mid as mid = len / 2.
+2. Push all the elements till mid into the stack i.e. str[0…mid-1].
+3. If the length of the string is odd then neglect the middle character.
+4. Till the end of the string, keep popping elements from the stack and compare them with the current character i.e. string[i].
+5. If there is a mismatch then the string is not a palindrome. If all the elements match then the string is a palindrome.
+
+
+
+Time Complexity: O(N).
+Auxiliary Space: O(N). 
+"""
 
 from tests import tests_cases
 
@@ -60,11 +74,10 @@ if __name__ == "__main__":
         output = test['output']
         if isPalindrome(test["input"]["str"]):
             # if result == output:
-            print("The given string {} is Palindrome string!".format(test["input"]["str"]))
+            print("The given string '{}' is Palindrome string!".format(test["input"]["str"]))
         else:
-            print("The given string {} is not Palindrome string.".format(test["input"]["str"]))
+            print("The given string '{}' is not Palindrome string.".format(test["input"]["str"]))
 
 
 
-# Time Complexity: O(N).
-# Auxiliary Space: O(N). 
+

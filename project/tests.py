@@ -3,17 +3,17 @@ tests_cases = [{
     "input":{
         "str": "EXAMPLE"
     }, 
-    "output": "No" 
+    "output": False 
 },
 {
     "input": {
         "str": "MADAM"
     },
-    "output": "Yes" 
+    "output": True 
 },
 {
     "input": {
         "str": "RADAR"
     },
-    "output": "Yes"
+    "output": True
 }]
